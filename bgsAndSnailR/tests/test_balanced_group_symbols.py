@@ -1,5 +1,5 @@
 
-from balanced_group_symbols import balanced_group_symbols
+from bgsAndSnailR.src.balanced_group_symbols import balanced_group_symbols
 
 def test_balanced_group_symbols():
     assert balanced_group_symbols('[()]{}{()()}') == True
