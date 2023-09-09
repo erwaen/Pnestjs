@@ -9,6 +9,7 @@ def test_balanced_group_symbols():
     assert balanced_group_symbols('(()[{}])') == True
     assert balanced_group_symbols('()[]{}') == True
     assert balanced_group_symbols('(()()())') == True
+    assert balanced_group_symbols('') == True
 
     assert balanced_group_symbols('[(])') == False
     assert balanced_group_symbols('(') == False
@@ -16,3 +17,8 @@ def test_balanced_group_symbols():
     assert balanced_group_symbols('({)}') == False
     assert balanced_group_symbols('{{[()]}}]') == False
     assert balanced_group_symbols('()[]{}(') == False
+    assert balanced_group_symbols('adsasda') == False
+    assert balanced_group_symbols(' ') == False
+
+
+

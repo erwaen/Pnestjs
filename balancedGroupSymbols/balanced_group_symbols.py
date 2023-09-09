@@ -25,6 +25,11 @@ def balanced_group_symbols(user_inp: str):
 
             if head_stack != SYMBOLS[c]:
                 return False
+            
+        else:
+            # if is anohter symbol like a 'abcmlfasl' or whatever, we just print something and return false
+            print(f"!!!!! THE char '{c}' is NOT A VALID CHARACTER!!!")
+            return False
 
     # Finally if there's another char inside my_stack this will return False, but if there's no char left, this will return True
     return len(my_stack) == 0
