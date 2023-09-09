@@ -1,3 +1,5 @@
+# will be better put this const in the function, but i dont want to load in memory every time a test is run;
+# just only once will load in memory
 SYMBOLS = {
     ')': '(',
     ']': '[',
