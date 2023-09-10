@@ -15,7 +15,7 @@ import { AuthGuard } from './auth.guard';
     JwtModule.register({
       global: true,
       secret: process.env.SECRET,
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '15m' }, // requirement of this backend test
     }),
   ],
   controllers: [AuthController],
