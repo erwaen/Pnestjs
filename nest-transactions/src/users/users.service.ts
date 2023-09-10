@@ -28,6 +28,15 @@ export class UsersService {
         return users;
     }
 
+    async findByUsername(username: string): Promise<User> {
+        const user = await this.userModel.findOne({username: username}).exec();
+        if(!user){
+            throw new ConflictException('Not username found');
+        }
+
+        return user;
+    }
+
 
 }
 
