@@ -1,6 +1,11 @@
 # Project 'bgsAndSnailR' and 'nest-transactions' README
 This README file explains how to set up and run the 'bgsAndSnailR' and 'nest-transactions' applications using Docker Compose.
 
+## More Information
+
+> :warning: **Important:** For more detailed information, including specifics about the API ENDPOINTS and any additional functionality, please refer to the README files located within each individual module's directory.
+
+
 ## Prerequisites
 You need to have Docker and Docker Compose installed on your machine. Confirm that you have them installed by running the following commands in your terminal:
 ```bash
