@@ -28,3 +28,4 @@ To run all tests, use the following command from the root directory of the proje
 ```bash
 pytest . # inside of bgsAndSnailR directory
 ```
+
