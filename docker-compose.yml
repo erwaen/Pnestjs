@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  bgsandsnailr:  
+    build: 
+      context: ./bgsAndSnailR
+      dockerfile: Dockerfile
+    volumes:
+      - ./bgsAndSnailR:/usr/src/app
+    environment:
+      PYTHONUNBUFFERED: 1
+
+  nest:
+    build: 
+      context: ./nest-transactions
+      dockerfile: Dockerfile
+    volumes:
+      - ./nest-transactions:/usr/src/app
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    environment:
+      NODE_ENV: development
