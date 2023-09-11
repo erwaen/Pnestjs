@@ -1,9 +1,10 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
+import mongoose, { Model, NullExpression } from 'mongoose';
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Transaction } from './schemas/transaction.schema';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { User } from 'src/users/schemas/users.schema';
+import { UpdateTransactionDto } from './dto/update-transaction.dto';
 
 
 // import { CreateCatDto } from './dto/create-cat.dto';
@@ -19,8 +20,6 @@ export class TransactionsService {
     ) { }
 
     async create(createTransaction: CreateTransactionDto): Promise<Transaction> {
-        console.log("hola");
-        console.log(createTransaction.owner_id);
         try {
             const existingUser = await this.userModel.findById(createTransaction.owner_id);
             const createdTransaction = new this.transactionModel({ amount: createTransaction.amount, type: createTransaction.type, owner: existingUser });
@@ -43,6 +42,38 @@ export class TransactionsService {
         }
 
         return user;
+    }
+
+    async findById(id: string): Promise<Transaction> {
+
+        try {
+            const existingTransaction = await this.transactionModel.findById(id);
+            if (!existingTransaction) {
+                throw new ConflictException('Transaction does not exist');
+
+            }
+            return existingTransaction;
+        } catch {
+            throw new ConflictException('Transaction does not exist');
+
+        }
+
+    }
+
+    async update(id: string, updatedTransaction: UpdateTransactionDto): Promise<Transaction | NullExpression>{
+        return this.transactionModel.findByIdAndUpdate(id, updatedTransaction, { new: true });
+    }
+
+    async delete(id: string): Promise<any> {
+        var ObjectId = mongoose.Types.ObjectId;
+
+        try {
+            const removedTransaction = this.transactionModel.findByIdAndRemove(new ObjectId(id));
+            return removedTransaction;
+        } catch (error) {
+            throw new ConflictException('Transaction does not exist');
+        }
+
     }
 
 
